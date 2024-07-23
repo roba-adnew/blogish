@@ -13,6 +13,8 @@ dist-ssr
 *.local
 **/.env
 **/.rest
+*.env
+*.rest
 **/*example*
 **/*Example*
 package-lock.json
