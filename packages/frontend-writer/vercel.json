@@ -1,0 +1,5 @@
+{
+    "buildCommand": "cd ../.. && npm run build:shared && cd packages/frontend-writer && npm run build",
+    "outputDirectory": "dist",
+    "installCommand": "cd ../.. && npm install"
+  }

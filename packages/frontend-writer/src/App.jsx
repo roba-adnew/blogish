@@ -1,12 +1,13 @@
+import { useState } from 'react'
 import SimpleText from '../../shared/Components/SimpleText'
 
 function App() {
 
   return (
     <>
-      <SimpleText 
-        title='reader good' 
-        body='man from now on deploying first' 
+      <SimpleText
+        title='writer good'
+        body='not really writing et tho'
       />
     </>
   )
