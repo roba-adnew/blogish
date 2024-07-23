@@ -43,7 +43,7 @@ passport.use(
             return done(null, user)
         }
         catch (err) {
-            debug('error trying to query user on authenitcatoin')
+            debug('error trying to query user on authentication')
             return done(err, false)
         }
     })

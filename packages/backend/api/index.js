@@ -19,7 +19,6 @@ async function main() {
   }
 main();
 
-
 const app = express()
 
 app.use(express.json())

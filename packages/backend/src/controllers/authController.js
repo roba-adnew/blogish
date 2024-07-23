@@ -111,9 +111,8 @@ exports.refreshToken = asyncHandler(async (req, res) => {
 })
 
 exports.logoutPost = asyncHandler(async (req, res) => {
-    const userId = req.body.userId;
-    const query = { userId: userId }
-    debug(query)
+    const query = { userId: req.body.userId }
+    debug('logout query', query)
     const result = await RefreshToken.deleteMany(query)
     if (result.deletedCount === 0) {
         debug('Deleted reads: %O', result)
