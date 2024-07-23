@@ -37,35 +37,31 @@ exports.postCreationPost = [
     })
 ]
 
-exports.postEditPut = (req, res, next) => {
-    passport.authenticate("jwt", { session: false }, (err, user, info) => {
-        if (err) return next(err);
-        if (!user) return res.status(401).json({ message: 'Unauthorized' })
-        req.user = user;
-        debug('User authenticated: %O', req.user)
-        asyncHandler(async (req, res, next) => {
-            const postId = req.params.postId
-            const editedPost = req.body;
-            debug('Received request body:', editedPost);
+exports.postEditPut = [
+    passport.authenticate("jwt", { session: false }),
+    checkUser,
+    asyncHandler(async (req, res, next) => {
+        const postId = req.params.postId
+        const editedPost = req.body;
+        debug('Received request body:', editedPost);
 
-            const postToUpdate = await Post.findByIdAndUpdate(
-                postId,
-                { $set: editedPost }
-            );
-            const updatedPost = await Post.findById(postId)
-            debug('queried post: %O', postToUpdate)
-            debug('queried update: %O', )
+        const postToUpdate = await Post.findByIdAndUpdate(
+            postId,
+            { $set: editedPost }
+        );
+        const updatedPost = await Post.findById(postId)
+        debug('queried post: %O', postToUpdate)
+        debug('queried update: %O',)
 
-            if (!postToUpdate || !updatedPost) {
-                throw new Error('Update not found')
-            }
-            
-            res
-                .status(201)
-                .json({ message: 'Post updated successfully', updatedPost });
-        })(req, res, next)
-    })(req, res, next)
-}
+        if (!postToUpdate || !updatedPost) {
+            throw new Error('Update not found')
+        }
+
+        res
+            .status(201)
+            .json({ message: 'Post updated successfully', updatedPost });
+    })
+]
 
 exports.commentsGet = asyncHandler(async (req, res, next) => {
     const postId = req.params.postId;
@@ -89,10 +85,11 @@ exports.commentCreationPost = [
     passport.authenticate("jwt", { session: false }),
     checkUser,
     asyncHandler(async (req, res, next) => {
+        const postId = req.params.postId
         debug('User authenticated: %O', req.user)
         debug('content', req.body)
         const updatedPost = await Post.findByIdAndUpdate(
-            req.params.postId,
+            postId,
             {
                 $push: {
                     comments: {
@@ -104,40 +101,50 @@ exports.commentCreationPost = [
             { new: true, runValidators: true }
         )
         if (!updatedPost) throw new Error('Post not found')
+        const updatedComments = await Post
+            .findById(postId)
+            .populate({
+                path: 'comments',
+                select: 'user ts content',
+                populate: {
+                    path: 'user',
+                    select: 'username'
+                }
+            })
         debug('Comment added: %O', updatedPost)
-        res.status(201).json({ message: 'Comment created' })
+        res.status(201).json({ message: 'Comment created', updatedComments })
     })
 ]
 
 exports.commentEditPut = [
     passport.authenticate("jwt", { session: false }),
-        checkUser,
-        asyncHandler(async (req, res, next) => {
-            const postId = req.params.postId
-            const { commentId, newContent } = req.body;
-            debug('Received request body:', req.body);
+    checkUser,
+    asyncHandler(async (req, res, next) => {
+        const postId = req.params.postId
+        const { commentId, newContent } = req.body;
+        debug('Received request body:', req.body);
 
-            const post = await Post.findById(postId);
-            debug('queried post: %O', post)
-            if (!post) throw new Error('Post not found');
+        const post = await Post.findById(postId);
+        debug('queried post: %O', post)
+        if (!post) throw new Error('Post not found');
 
-            const comment = post.comments.id(commentId);
-            debug('subsequent comment: %O', comment)
+        const comment = post.comments.id(commentId);
+        debug('subsequent comment: %O', comment)
 
-            const prevTs = comment.ts;
-            const prevContent = comment.content;
+        const prevTs = comment.ts;
+        const prevContent = comment.content;
 
-            if (!comment) throw new Error('Comment not found');
+        if (!comment) throw new Error('Comment not found');
 
-            comment.content = newContent;
-            comment.ts = Date.now();
-            comment.edits.push({ ts: prevTs, content: prevContent });
+        comment.content = newContent;
+        comment.ts = Date.now();
+        comment.edits.push({ ts: prevTs, content: prevContent });
 
-            await post.save();
-            res
-                .status(201)
-                .json({ message: 'Comment updated successfully', comment });
-        })
+        await post.save();
+        res
+            .status(201)
+            .json({ message: 'Comment updated successfully', comment });
+    })
 ]
 
 function checkUser(req, res, next) {
