@@ -25,7 +25,7 @@ app.use(cors())
 app.use(passport.initialize())
 
 app.use('/user', authRouter)
-app.use('/', (req, res) => res.send('backend server hosting api endpoints'))
+// app.use('/', (req, res) => res.send('backend server hosting api endpoints'))
 
 app.listen(4000)
 
