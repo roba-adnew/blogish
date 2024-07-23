@@ -28,6 +28,6 @@ app.use(passport.initialize())
 app.use('/user', authRouter)
 app.use('/posts', postRouter)
 
-app.listen(4000)
+app.listen(3000)
 
 module.exports = app;
