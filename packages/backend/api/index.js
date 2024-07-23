@@ -2,8 +2,9 @@ require('dotenv').config()
 const express = require('express')
 const mongoose = require('mongoose')
 const cors = require('cors')
-const authRouter = require('../src/routes/auth')
 const passport = require('../src/controllers/passportConfig')
+const authRouter = require('../src/routes/auth')
+const postRouter = require('../src/routes/post')
 
 mongoose.set('strictQuery', false);
 const mongoDB = process.env.MONGODB_URI;
@@ -20,12 +21,13 @@ main();
 
 
 const app = express()
+
 app.use(express.json())
 app.use(cors())
 app.use(passport.initialize())
 
 app.use('/user', authRouter)
-// app.use('/', (req, res) => res.send('backend server hosting api endpoints'))
+app.use('/posts', postRouter)
 
 app.listen(4000)
 
