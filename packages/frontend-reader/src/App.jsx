@@ -1,14 +1,15 @@
-import SimpleText from '../../shared/Components/SimpleText'
+import React from 'react'
+import { Outlet } from 'react-router-dom'
+import NavBar from '../../shared/src/Components/NavBar'
+import { AuthProvider } from '../../shared/src/Contexts/AuthContext'
+import './App.css'
 
 function App() {
-
   return (
-    <>
-      <SimpleText 
-        title='reader good' 
-        body='man from now on deploying first' 
-      />
-    </>
+    <AuthProvider>
+      <NavBar />
+      <Outlet />
+    </AuthProvider>
   )
 }
 
