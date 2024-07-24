@@ -1,6 +1,6 @@
 import React from 'react';
 import App from '../App'
-import SignUpForm from '../../../shared/src/Components/SignUp'
+import SignUpForm from 'shared' //'../../../shared/src/Components/SignUp'
 import Login from '../../../shared/src/Components/Login'
 import Feed from '../Components/Feed'
 
