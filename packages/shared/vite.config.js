@@ -12,11 +12,13 @@ export default defineConfig({
       fileName: (format) => `shared-components.${format}.js`
     },
     rollupOptions: {
-      external: ['react', 'react-router-dom'],
+      external: ['react', 'react-dom', 'react-router-dom', 'date-fns'],
       output: {
         globals: {
-          react: 'React',
-          'react-dom': 'ReactDOM'
+          'react': 'React',
+          'react-dom': 'ReactDOM',
+          'react-router-dom': 'ReactRouterDOM',
+          'date-fns': 'DateFNS'
         }
       }
     }
