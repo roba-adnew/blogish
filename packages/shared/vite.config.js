@@ -7,18 +7,16 @@ export default defineConfig({
   plugins: [react()],
   build: {
     lib: {
-      entry: path.resolve(__dirname, 'src/index.js'),
+      entry: path.resolve(__dirname, 'Components/'),
       name: 'SharedComponents',
       fileName: (format) => `shared-components.${format}.js`
     },
     rollupOptions: {
-      external: ['react', 'react-dom', 'react-router-dom', 'date-fns'],
+      external: ['react', 'react-router-dom'],
       output: {
         globals: {
-          'react': 'React',
-          'react-dom': 'ReactDOM',
-          'react-router-dom': 'ReactRouterDOM',
-          'date-fns': 'DateFNS'
+          react: 'React',
+          'react-dom': 'ReactDOM'
         }
       }
     }
