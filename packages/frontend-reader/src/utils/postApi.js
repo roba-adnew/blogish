@@ -1,7 +1,6 @@
-require('dotenv').config({ path: '../.env' })
-// import { fetchWithToken } from '../../../shared/utils/authApi'
+    // import { fetchWithToken } from '../../../shared/utils/authApi'
 
-const base_url = process.env.BASE_URL || 'http://localhost:3000'
+const base_url = 'http://localhost:3000' || process.env.REACT_APP_BASE_URL 
 
 async function getPosts() {
     try {
