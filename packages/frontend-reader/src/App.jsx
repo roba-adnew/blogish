@@ -1,15 +1,8 @@
-import SimpleText from '../../shared/Components/SimpleText'
-
+// import SimpleText from '../../shared/Components/SimpleText'
+import Feed from '../src/Components/Feed'
 function App() {
 
-  return (
-    <>
-      <SimpleText 
-        title='reader good' 
-        body='man from now on deploying first' 
-      />
-    </>
-  )
+  return (<Feed />)
 }
 
 export default App
