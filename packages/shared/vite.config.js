@@ -7,7 +7,7 @@ export default defineConfig({
   plugins: [react()],
   build: {
     lib: {
-      entry: path.resolve(__dirname, 'src/'),
+      entry: path.resolve(__dirname, 'src/index.js'),
       name: 'SharedComponents',
       fileName: (format) => `shared-components.${format}.js`
     },
