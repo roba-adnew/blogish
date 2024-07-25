@@ -1,19 +1,17 @@
 {
-  "name": "shared",
+  "name": "blogish",
   "version": "1.0.0",
   "main": "index.js",
   "workspaces": [
     "packages/*"
   ],
   "scripts": {
-    "dev:shared": "npm run dev --workspace=packages/shared",
     "dev:frontend-r": "npm run dev --workspace=packages/frontend-reader",
     "dev:frontend-w": "npm run dev --workspace=packages/frontend-writer",
-    "dev:all": "npm-run-all dev:shared dev:frontend-r dev:frontend-w",
-    "build:shared": "npm run build --workspace=packages/shared",
+    "dev:all": "npm-run-all dev:frontend-r dev:frontend-w",
     "build:frontend-r": "npm run build --workspace=packages/frontend-reader",
     "build:frontend-w": "npm run build --workspace=packages/frontend-writer",
-    "build:all": "npm-run-all build:shared build:frontend-r build:frontend-w",
+    "build:all": "npm-run-all build:frontend-r build:frontend-w",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
