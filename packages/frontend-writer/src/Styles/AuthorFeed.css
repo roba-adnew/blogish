@@ -1,0 +1,104 @@
+#feed {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Post Card formatting */
+.post, #newPostButton, .postForm {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 60%;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 1.3rem;
+    margin: 0.6rem;
+}
+
+.post > .title {
+    font-size: 1rem;
+    font-weight: 800;
+}
+
+.post > :not(.title) {
+    font-size: 0.7rem;
+}
+
+/*  Flag formatting */
+.flags {
+    display: flex;
+    flex-direction: row;
+}
+
+
+.flags > div {
+    padding: 0.2rem;
+}
+
+.inDraft {
+    margin-right: 0.5rem;
+    background-color: gray;
+    color: white;
+    font-weight: 700;
+}
+
+.completed {
+    display: none;
+}
+
+.unPublished {
+    background-color: rgb(255, 119, 119);
+    color: white;
+    font-weight: 700;
+}
+
+.published {
+    background-color: green;
+    color: white;
+    font-weight: 700;
+}
+
+/* New post button */
+#newPostButton {
+    border: 0.1rem solid rgba(0, 0, 0, 0.145);
+    width: auto;
+    font-style: italic;
+    font-weight: 550;
+}
+
+.postForm > form {
+    padding: 0%;
+    width: 100%
+}
+
+.postForm p {
+    font-style: italic;
+}
+
+.postForm .title, .postForm .content {
+    margin-bottom: 2%;
+    width: 87%
+}
+
+.postForm .content {
+    overflow-y: visible;
+    height: 80px;
+}
+
+button {
+    background: none;
+    padding: 0.2rem;
+    margin: 0.2rem;
+    cursor: pointer;
+    text-align: left;
+    font-size: 0.9rem;
+    text-decoration: italics;
+    outline: none;
+}
+
+#checkbox {
+    display: flex;
+    align-items: center;
+    font-size: 0.9rem;
+}

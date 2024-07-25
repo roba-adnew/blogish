@@ -1,15 +1,15 @@
-import { useState } from 'react'
-import SimpleText from '../../shared/Components/SimpleText'
+import React from 'react'
+import { Outlet } from 'react-router-dom'
+import { AuthProvider } from './Contexts/AuthContext'
+import NavBar from './Components/NavBar'
+import './App.css'
 
 function App() {
-
   return (
-    <>
-      <SimpleText
-        title='writer good'
-        body='not really writing et tho'
-      />
-    </>
+    <AuthProvider>
+      <NavBar />
+      <Outlet />
+    </AuthProvider>
   )
 }
 
