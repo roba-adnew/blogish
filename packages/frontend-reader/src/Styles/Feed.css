@@ -1,7 +1,3 @@
-* {
-    font-family: Helvetica;
-}
-
 #feed {
     display: flex;
     flex-direction: column;

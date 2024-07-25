@@ -1,8 +1,16 @@
-// import SimpleText from '../../shared/Components/SimpleText'
-import Feed from '../src/Components/Feed'
-function App() {
+import React from 'react'
+import { Outlet } from 'react-router-dom'
+import NavBar from './Components/NavBar'
+import { AuthProvider } from './Contexts/AuthContext'
+import './App.css'
 
-  return (<Feed />)
+function App() {
+  return (
+    <AuthProvider>
+      <NavBar />
+      <Outlet />
+    </AuthProvider>
+  )
 }
 
 export default App

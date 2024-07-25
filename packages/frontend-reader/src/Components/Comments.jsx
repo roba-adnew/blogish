@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import { format } from 'date-fns'
 import { getComments, editComment, addComment } from '../utils/postApi'
-// import { useAuth } from '../../../shared/Contexts/AuthContext'
+import { useAuth } from '../Contexts/AuthContext'
 
 function Comment({ user = null, comment, postId, refetch }) {
     const [editing, setEditing] = useState(false)
     const loggedIn = !!user
-    // const userIsCommenter = loggedIn && (user._id === comment.user._id);
-    const userIsCommenter = false;
+    const userIsCommenter = loggedIn && (user._id === comment.user._id);
 
     function toggleForm() { setEditing(!editing) }
 
@@ -91,8 +90,7 @@ function CommentSection({ postId }) {
     const [refetch, setRefetch] = useState(false)
     const [error, setError] = useState(null)
 
-    // const { user } = useAuth()
-    const user = null;
+    const { user } = useAuth()
 
     useEffect(() => {
         async function fetchComments(postId) {
