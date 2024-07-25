@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { format } from 'date-fns'
 import { getPosts } from '../utils/postApi'
-// import CommentSection from './Comments'
+import CommentSection from './Comments'
 import '../Styles/Feed.css'
 
 function Post({ post }) {
@@ -11,7 +11,7 @@ function Post({ post }) {
             <p className='authorDate'>{post.user.username} - {format(new Date(post.ts), 'MMM-dd-yyyy')}</p>
             {/* add back to author date  - */}
             <p className='content'>{post.content}</p>
-            {/* <CommentSection postId={post._id} /> */}
+            <CommentSection postId={post._id} />
         </div>
     )
 }

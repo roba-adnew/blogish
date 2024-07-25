@@ -24,32 +24,32 @@ async function getComments(postId) {
     }
 }
 
-// async function editComment(postId, commentId, newContent) {
-//     const url = `${base_url}/posts/${postId}/comments/edit`
-//     const method = 'PUT'
-//     const body = { commentId, newContent}
-//     try {
-//         const response = await fetchWithToken(url, method, body)
-//         const data = await response.json()
-//         return data
-//     } catch (err) {
-//         throw err
-//     }
-// }
+async function editComment(postId, commentId, newContent) {
+    const url = `${base_url}/posts/${postId}/comments/edit`
+    const method = 'PUT'
+    const body = { commentId, newContent}
+    try {
+        const response = await fetchWithToken(url, method, body)
+        const data = await response.json()
+        return data
+    } catch (err) {
+        throw err
+    }
+}
 
-// async function addComment(postId, content){
-//     const body = { content }
-//     const method = 'POST'
-//     const url = `${base_url}/posts/${postId}/comments`
-//     try {
-//         const response = await fetchWithToken(url, method, body) 
-//         const data = await response.json()
-//         return data
-//     } catch (err) {
-//         throw err
-//     }
-// }
+async function addComment(postId, content){
+    const body = { content }
+    const method = 'POST'
+    const url = `${base_url}/posts/${postId}/comments`
+    try {
+        const response = await fetchWithToken(url, method, body) 
+        const data = await response.json()
+        return data
+    } catch (err) {
+        throw err
+    }
+}
 
 export { getPosts, getComments, 
-    // editComment, addComment 
+    editComment, addComment 
 };
