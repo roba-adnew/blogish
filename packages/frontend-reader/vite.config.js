@@ -6,14 +6,14 @@ export default defineConfig({
   plugins: [react()],
   build: {
     outDir: 'dist',
-    rollupOptions: {
-      external: ['date-fns'],
-      output: {
-        globals: {
-          dateFns: 'date-fns'
-        }
-      }
-    }
+    // rollupOptions: {
+    //   external: ['date-fns'],
+    //   output: {
+    //     globals: {
+    //       dateFns: 'date-fns'
+    //     }
+    //   }
+    // }
   },
   server: {
     port: 4000,
