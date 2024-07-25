@@ -6,6 +6,7 @@ const Post = require('../models/post')
 exports.postsGet = asyncHandler(async (req, res, next) => {
     const posts = await Post
         .find({})
+        .sort({ ts: -1 })
         .populate('user', 'username');
     debug('Retrieving posts');
     res.json({ posts })
@@ -17,6 +18,7 @@ exports.authorPostsGet = [
     asyncHandler(async (req, res, next) => {
         const posts = await Post
             .find({ user: req.user.id })
+            .sort({ ts: -1 })
             .populate('user', 'username');
         debug(`Retrieving posts for ${req.user.name}`);
         res.json({ posts })
@@ -76,6 +78,10 @@ exports.commentsGet = asyncHandler(async (req, res, next) => {
                 select: 'username'
             }
         })
+
+    if (post && post.comments) {
+        post.comments.sort((a, b) => b.ts - a.ts);
+    }
     debug('Retrieving comments: %O', post.comments);
     const comments = post.comments;
     res.json({ comments })
