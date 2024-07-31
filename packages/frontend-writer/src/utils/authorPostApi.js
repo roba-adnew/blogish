@@ -1,7 +1,7 @@
 import { fetchWithToken } from "./authApi"; 
 
-const base_url = `${import.meta.env.VITE_API_URL}/posts`
-    || 'http://localhost:3000/posts'
+const base_url = `${import.meta.env.VITE_API_URL}/posts/author`
+    || 'http://localhost:3000/posts/author'
 
 async function getAuthorPosts() {
     const url = `${base_url}`
@@ -18,6 +18,9 @@ async function getAuthorPosts() {
 async function addPost(post){
     const method = 'POST'
     const url = `${base_url}`
+    console.log("url:", url)
+    console.log("post:", post)
+
     try {
         const response = await fetchWithToken(url, method, post) 
         const data = await response.json()
