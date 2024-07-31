@@ -1,8 +1,7 @@
 import { fetchWithToken } from "./authApi";
 
-const base_url = 
-    'http://localhost:3000/posts' || `${process.env.REACT_APP_BASE_URL 
-}/posts`
+const base_url = `${process.env.REACT_APP_BASE_URL }/posts` 
+    || 'http://localhost:3000/posts' 
 async function getPosts() {
     try {
         const response = await fetch(base_url);
