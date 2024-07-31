@@ -42,7 +42,7 @@ function Feed({ }) {
     if (isLoading) {
         return (
             <dialog open>
-                Just a moment, we&apos;re just getting this post for you...
+                Just a moment, we&apos;re just getting ready here for you...
             </dialog>
         )
     }

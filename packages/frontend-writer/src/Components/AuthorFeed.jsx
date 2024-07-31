@@ -154,7 +154,7 @@ function AuthorFeed() {
     if (isLoading) {
         return (
             <dialog>
-                Just a moment, we&apos;re just getting this stuff for you...
+                Just a moment, we&apos;re just getting ready here for you...
             </dialog>
         )
     }
