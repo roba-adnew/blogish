@@ -1,6 +1,6 @@
 import { fetchWithToken } from "./authApi";
 
-const base_url = `${process.env.REACT_APP_BASE_URL }/posts` 
+const base_url = `${import.meta.env.VITE_API_URL }/posts` 
     || 'http://localhost:3000/posts' 
 async function getPosts() {
     try {

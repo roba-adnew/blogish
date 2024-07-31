@@ -1,5 +1,5 @@
-const base_url = 
-    'http://localhost:3000/user' || `${process.env.REACT_APP_BASE_URL}/user` 
+const base_url = `${import.meta.env.VITE_API_URL}/user`
+    || 'http://localhost:3000/user'
 
 async function signUp(formData) {
     const url = `${base_url}/signup`

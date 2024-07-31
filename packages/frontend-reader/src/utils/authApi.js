@@ -1,4 +1,4 @@
-const base_url = `${process.env.REACT_APP_BASE_URL}/user`
+const base_url = `${import.meta.env.VITE_API_URL}/user`
     || 'http://localhost:3000/user'
 
 async function signUp(formData) {
@@ -22,6 +22,7 @@ async function signUp(formData) {
 }
 
 async function login(credentials) {
+    console.log('url', base_url)
     const url = `${base_url}/login`
     const options = {
         method: 'POST',
@@ -31,6 +32,7 @@ async function login(credentials) {
     try {
         console.log('logging in for', credentials)
         const response = await fetch(url, options)
+        console.log(response)
         const data = await response.json()
         return data
     } catch (err) {

@@ -97,7 +97,7 @@ function CommentSection({ postId }) {
             try {
                 const fetchedComments = await getComments(postId);
                 if (!fetchedComments || fetchedComments.length === 0) {
-                    throw new Error('failed to load comments')
+                    console.log('this post does not have any comments')
                 }
                 setComments(fetchedComments)
             } catch (err) {
