@@ -161,6 +161,7 @@ function AuthorFeed() {
 
     return (
         <div id="feed">
+            <NewPostButton refetch={setRefetch} />
             {posts.map(post => (
                 <PostPreviewCard
                     postDetails={post}
@@ -168,7 +169,6 @@ function AuthorFeed() {
                     refetch={setRefetch}
                 />
             ))}
-            <NewPostButton refetch={setRefetch} />
         </div>
     )
 }

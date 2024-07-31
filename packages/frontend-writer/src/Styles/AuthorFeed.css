@@ -59,7 +59,7 @@
     font-weight: 700;
 }
 
-/* New post button */
+/* New post button and form */
 #newPostButton {
     border: 0.1rem solid rgba(0, 0, 0, 0.145);
     width: auto;
@@ -79,6 +79,11 @@
 .postForm .title, .postForm .content {
     margin-bottom: 2%;
     width: 87%
+}
+
+.postForm .title {
+    margin-left: 0px;
+    padding-left: 0px;
 }
 
 .postForm .content {
