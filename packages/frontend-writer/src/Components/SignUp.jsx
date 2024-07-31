@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react'
+import { Link } from 'react-router-dom'
 import { signUp } from '../utils/authApi'
 import '../Styles/SignUp.css'
 
@@ -25,7 +26,7 @@ function CreationStatusModal({ creatingFlag, successFlag }) {
             <dialog ref={dialogRef}>
                 {creatingFlag && <p>Creating your account</p>}
                 {successFlag && <p>Account created</p>}
-                <button id='modalButton'><a href="/login">login</a></button>
+                <button id='modalButton'><Link to="/login">login</Link></button>
             </dialog>
         </>
     )
